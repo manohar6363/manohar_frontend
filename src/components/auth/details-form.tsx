@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Book, Loader2, LogOut, Mail, User } from "lucide-react";
-
+import { API_BASE_URL } from "../../apiConfig";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {
@@ -69,7 +69,7 @@ export function DetailsForm() {
   async function onSubmit(values: z.infer<typeof detailsFormSchema>) {
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:8000/api/details/", {
+      const response = await fetch(`${API_BASE_URL}/api/details/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

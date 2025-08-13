@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { AlertTriangle, Loader2, Lock, User } from "lucide-react";
+import { API_BASE_URL } from "../../apiConfig";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -49,7 +50,7 @@ export function AuthForm() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:8000/api/auth/", {
+      const response = await fetch(`${API_BASE_URL}/api/auth/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

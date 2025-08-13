@@ -1,14 +1,12 @@
-"use client";
-
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
-import type { InputProps } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-interface FloatingLabelInputProps extends InputProps {
+export interface FloatingLabelInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> { // ✅ use native input props
   label: string;
-  id: string; // id is required for label's htmlFor
+  id: string;
   icon?: React.ReactNode;
 }
 
@@ -28,7 +26,7 @@ const FloatingLabelInput = React.forwardRef<HTMLInputElement, FloatingLabelInput
             icon ? 'pl-10' : 'pl-4',
             className
           )}
-          placeholder=" " // This is crucial for the :placeholder-shown selector
+          placeholder=" "
           {...props}
         />
         <Label
